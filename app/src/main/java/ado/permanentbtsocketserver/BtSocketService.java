@@ -28,8 +28,10 @@ public class BtSocketService extends Service {
 
     @Override
     public void onDestroy () {
-        mServerConnector.stopListening();
-        Log.w(TAG, "onDestroy() called, BtSocket will be closed!!");
+        if(mServerConnector.isListening()) {
+            mServerConnector.stopListening();
+            Log.w(TAG, "onDestroy() called, BtSocket will be closed!!");
+        }
         super.onDestroy();
     }
 

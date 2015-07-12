@@ -70,10 +70,11 @@ public class ServerConnector {
                     throw new IllegalStateException("can't create a server socket. BT down?");
                 }
             }
-
+            //continuos listening
             while(mRunning) {
                 try {
                     mServerSocket.accept();
+                    Log.d(TAG, "ListenService.run() accepted a new client!");
                 } catch (IOException e) {
                     Log.e(TAG, "ListenService.run() accept() call aborted");
                 }
